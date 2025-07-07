@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kritiya Fashion - PORTFOLIO DEMO ONLY - NO REAL TRANSACTIONS</title>
+    <meta name="description" content="Portfolio demonstration website for Kritiya Fashion. This is NOT a real e-commerce site. No actual payments, transactions, or data collection occurs.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Demo Disclaimer Banner -->
+    <div class="demo-banner">
+        <div class="container">
+            <div class="demo-content">
+                <span class="demo-icon">⚠️</span>
+                <div class="demo-text">
+                    <strong>PORTFOLIO DEMONSTRATION ONLY</strong> - This is NOT a real shopping website. 
+                    This is a developer portfolio project. NO real transactions, payments, accounts, or data collection occurs. 
+                    All forms and payment features are simulated for demonstration purposes only.
+                </div>
+                <button id="dismissDemo" class="demo-dismiss">×</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Security Notice -->
+    <div class="security-notice">
+        <div class="container">
+            <p><strong>🔒 SECURITY NOTICE:</strong> This website is a portfolio demonstration. Do NOT enter real personal information, payment details, or passwords. All data is stored locally in your browser only and is not transmitted anywhere.</p>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="flex items-center justify-between">
+                <div class="logo">
+                    <h1 class="logo-text">Kritiya [DEMO]</h1>
+                    <span class="logo-tagline">Portfolio Demonstration Only</span>
+                </div>
+                
+                <nav class="nav">
+                    <button class="nav-btn active" data-category="all">All Products</button>
+                    <button class="nav-btn" data-category="tshirts">T-Shirts</button>
+                    <button class="nav-btn" data-category="kurtas">Kurtas</button>
+                </nav>
+                
+                <div class="header-actions flex items-center gap-16">
+                    <button id="themeToggle" class="theme-btn" title="Toggle Theme">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                    <button id="searchBtn" class="search-btn" title="Search Products">
+                        <span class="search-icon">🔍</span>
+                    </button>
+                    <button id="cartBtn" class="cart-btn">
+                        <span class="cart-icon">🛍️</span>
+                        <span id="cartCount" class="cart-count">0</span>
+                    </button>
+                    <button id="authBtn" class="btn btn--primary">DEMO: Sign In (No Real Account)</button>
+                    <div id="userProfile" class="user-profile hidden">
+                        <img id="userAvatar" class="user-avatar" src="" alt="User">
+                        <span id="userName" class="user-name"></span>
+                        <button id="accountBtn" class="btn btn--secondary btn--sm">Account (Demo)</button>
+                        <button id="signOutBtn" class="btn btn--outline btn--sm">Sign Out</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search Bar -->
+    <div id="searchBar" class="search-container hidden">
+        <div class="container">
+            <div class="search-input-container">
+                <input type="text" id="searchInput" class="form-control" placeholder="Search products...">
+                <button id="clearSearch" class="clear-search-btn">×</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <h2 class="hero-title">Premium Fashion Collection</h2>
+                <p class="hero-subtitle">Discover the latest trends in T-shirts and Kurtas with premium quality fabrics</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">18+</span>
+                        <span class="stat-label">Premium Products</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Quality Assured</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Customer Support</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Filters -->
+            <section class="filters">
+                <div class="filter-group">
+                    <label class="filter-label">Sort by:</label>
+                    <select id="sortFilter" class="form-control filter-select">
+                        <option value="featured">Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="name">Name A-Z</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">Price Range:</label>
+                    <select id="priceFilter" class="form-control filter-select">
+                        <option value="all">All Prices</option>
+                        <option value="0-500">Under ₹500</option>
+                        <option value="500-1000">₹500 - ₹1000</option>
+                        <option value="1000-1500">₹1000 - ₹1500</option>
+                        <option value="1500+">Above ₹1500</option>
+                    </select>
+                </div>
+            </section>
+
+            <!-- Product Grid -->
+            <section class="products">
+                <div class="products-header flex items-center justify-between">
+                    <h3>Our Collection</h3>
+                    <div class="product-count">
+                        <span id="productCount">0</span> Products
+                    </div>
+                </div>
+                <div id="productGrid" class="product-grid">
+                    <!-- Products will be dynamically loaded -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Shopping Cart Sidebar -->
+    <div id="cartSidebar" class="cart-sidebar">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3>Shopping Cart</h3>
+                <button id="closeCart" class="close-btn">×</button>
+            </div>
+            <div id="cartItems" class="cart-items">
+                <!-- Cart items will be dynamically loaded -->
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <div class="total-row">
+                        <span>Subtotal:</span>
+                        <span id="cartSubtotal">₹0</span>
+                    </div>
+                    <div class="total-row">
+                        <span>GST (18%):</span>
+                        <span id="cartTax">₹0</span>
+                    </div>
+                    <div class="total-row total-final">
+                        <span>Total:</span>
+                        <span id="cartTotal">₹0</span>
+                    </div>
+                </div>
+                <button id="checkoutBtn" class="btn btn--primary btn--full-width" disabled>
+                    Proceed to Checkout (Demo)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Authentication Modal -->
+    <div id="authModal" class="modal">
+        <div class="modal-content auth-modal">
+            <div class="modal-header">
+                <h3 id="authTitle">DEMO ONLY - No Real Account Creation</h3>
+                <button id="closeAuth" class="close-btn">×</button>
+            </div>
+            <div class="demo-notice">
+                <p><strong>🔒 PORTFOLIO DEMO:</strong> This is a demonstration of login functionality for a developer portfolio. No real accounts are created. No data is stored on any server. Do NOT enter real personal information or passwords.</p>
+            </div>
+            <div class="auth-content">
+                <div class="auth-tabs">
+                    <button id="signinTab" class="auth-tab active">Sign In</button>
+                    <button id="signupTab" class="auth-tab">Sign Up</button>
+                </div>
+                
+                <!-- Sign In Form -->
+                <form id="signinForm" class="auth-form">
+                    <div class="form-group">
+                        <label class="form-label">Phone Number (DEMO ONLY - Not Real)</label>
+                        <input type="tel" id="signinPhone" class="form-control" placeholder="DEMO: Enter any number like 1234567890" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password (DEMO - Any Value)</label>
+                        <input type="password" id="signinPassword" class="form-control" placeholder="DEMO: Enter any password" required>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width">Sign In (Demo)</button>
+                </form>
+                
+                <!-- Sign Up Form -->
+                <form id="signupForm" class="auth-form hidden">
+                    <div class="form-group">
+                        <label class="form-label">Full Name (DEMO - Any Name)</label>
+                        <input type="text" id="signupName" class="form-control" placeholder="DEMO: John Portfolio Demo" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Phone Number (DEMO - Not Real)</label>
+                        <input type="tel" id="signupPhone" class="form-control" placeholder="DEMO: 1234567890" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">UPI ID (DEMO - Not Functional)</label>
+                        <input type="text" id="signupUpi" class="form-control" placeholder="DEMO: demo@portfolio" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password (DEMO - Any Value)</label>
+                        <input type="password" id="signupPassword" class="form-control" placeholder="DEMO: demopassword" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Confirm Password (DEMO)</label>
+                        <input type="password" id="confirmPassword" class="form-control" placeholder="DEMO: demopassword" required>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width">Create Demo Account</button>
+                </form>
+                
+                <div id="authError" class="auth-error hidden"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Account Modal -->
+    <div id="accountModal" class="modal">
+        <div class="modal-content account-modal">
+            <div class="modal-header">
+                <h3>My Account</h3>
+                <button id="closeAccount" class="close-btn">×</button>
+            </div>
+            <div class="account-content">
+                <div class="account-tabs">
+                    <button id="profileTab" class="account-tab active">Profile</button>
+                    <button id="ordersTab" class="account-tab">Order History</button>
+                    <button id="analyticsTab" class="account-tab">Analytics</button>
+                </div>
+                
+                <div id="profileSection" class="account-section">
+                    <h4>Profile Information</h4>
+                    <div class="profile-info">
+                        <div class="info-item">
+                            <label>Name:</label>
+                            <span id="profileName"></span>
+                        </div>
+                        <div class="info-item">
+                            <label>Phone:</label>
+                            <span id="profilePhone"></span>
+                        </div>
+                        <div class="info-item">
+                            <label>UPI ID:</label>
+                            <span id="profileUpi"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="ordersSection" class="account-section hidden">
+                    <h4>Order History</h4>
+                    <div id="ordersList" class="orders-list">
+                        <!-- Orders will be populated -->
+                    </div>
+                </div>
+                
+                <div id="analyticsSection" class="account-section hidden">
+                    <h4>Spending Analytics</h4>
+                    <div class="analytics-summary">
+                        <div class="analytics-card">
+                            <span class="analytics-label">Total Orders</span>
+                            <span id="totalOrders" class="analytics-value">0</span>
+                        </div>
+                        <div class="analytics-card">
+                            <span class="analytics-label">Total Spent</span>
+                            <span id="totalSpent" class="analytics-value">₹0</span>
+                        </div>
+                        <div class="analytics-card">
+                            <span class="analytics-label">Average Order</span>
+                            <span id="avgOrder" class="analytics-value">₹0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Details Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content product-modal">
+            <div class="modal-header">
+                <h3 id="productTitle">Product Details</h3>
+                <button id="closeProduct" class="close-btn">×</button>
+            </div>
+            <div class="product-details">
+                <div class="product-image-container">
+                    <img id="productImage" class="product-detail-image" src="" alt="">
+                    <div id="productBadges" class="product-detail-badges"></div>
+                </div>
+                <div class="product-info">
+                    <div class="product-pricing">
+                        <span id="productPrice" class="product-price"></span>
+                        <span id="productOriginalPrice" class="product-original-price"></span>
+                    </div>
+                    <p id="productDescription" class="product-description"></p>
+                    
+                    <div class="product-options">
+                        <div class="size-selector">
+                            <label>Size:</label>
+                            <div id="sizeOptions" class="option-buttons">
+                                <!-- Size options will be populated -->
+                            </div>
+                        </div>
+                        
+                        <div class="color-selector">
+                            <label>Color:</label>
+                            <div id="colorOptions" class="option-buttons">
+                                <!-- Color options will be populated -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="quantity-selector">
+                        <label>Quantity:</label>
+                        <div class="quantity-controls">
+                            <button id="decreaseQty" class="quantity-btn">-</button>
+                            <span id="productQuantity" class="quantity">1</span>
+                            <button id="increaseQty" class="quantity-btn">+</button>
+                        </div>
+                    </div>
+                    
+                    <button id="addToCartBtn" class="btn btn--primary btn--full-width">
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content payment-modal">
+            <div class="modal-header">
+                <h3>PORTFOLIO DEMO - NO REAL PAYMENT</h3>
+                <button id="closePayment" class="close-btn">×</button>
+            </div>
+            
+            <div class="payment-content">
+                <div class="demo-payment-notice">
+                    <p><strong>🚫 PORTFOLIO DEMONSTRATION:</strong> This is NOT a real payment system. This is a developer portfolio showcase. No actual payment will be processed. No money will be charged. Do not enter real payment information.</p>
+                </div>
+                
+                <div class="payment-timer">
+                    <span class="timer-icon">⏰</span>
+                    <span>Demo timer: <span id="paymentTimer">10:00</span> minutes (simulation only)</span>
+                </div>
+                
+                <div class="order-summary">
+                    <h4>Order Summary</h4>
+                    <div id="paymentOrderItems" class="payment-order-items">
+                        <!-- Order items will be populated -->
+                    </div>
+                    
+                    <div class="payment-totals">
+                        <div class="total-row">
+                            <span>Subtotal:</span>
+                            <span id="paymentSubtotal">₹0</span>
+                        </div>
+                        <div class="total-row">
+                            <span>GST (18%):</span>
+                            <span id="paymentTax">₹0</span>
+                        </div>
+                        <div class="total-row total-final">
+                            <span>Total Amount:</span>
+                            <span id="paymentTotal">₹0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="qr-section">
+                    <h4>Demo QR Code Payment (Not Functional)</h4>
+                    <div class="qr-container">
+                        <div class="qr-placeholder">
+                            <div class="qr-code">
+                                <svg viewBox="0 0 200 200" width="180" height="180">
+                                    <!-- QR Code Pattern -->
+                                    <rect width="200" height="200" fill="white"/>
+                                    <g fill="black">
+                                        <!-- Corner squares -->
+                                        <rect x="10" y="10" width="60" height="60"/>
+                                        <rect x="130" y="10" width="60" height="60"/>
+                                        <rect x="10" y="130" width="60" height="60"/>
+                                        <!-- Inner squares -->
+                                        <rect x="20" y="20" width="40" height="40" fill="white"/>
+                                        <rect x="140" y="20" width="40" height="40" fill="white"/>
+                                        <rect x="20" y="140" width="40" height="40" fill="white"/>
+                                        <rect x="30" y="30" width="20" height="20"/>
+                                        <rect x="150" y="30" width="20" height="20"/>
+                                        <rect x="30" y="150" width="20" height="20"/>
+                                        <!-- Data pattern -->
+                                        <rect x="80" y="20" width="10" height="10"/>
+                                        <rect x="100" y="20" width="10" height="10"/>
+                                        <rect x="80" y="40" width="10" height="10"/>
+                                        <rect x="100" y="40" width="10" height="10"/>
+                                        <rect x="80" y="60" width="10" height="10"/>
+                                        <rect x="100" y="60" width="10" height="10"/>
+                                        <rect x="20" y="80" width="10" height="10"/>
+                                        <rect x="40" y="80" width="10" height="10"/>
+                                        <rect x="60" y="80" width="10" height="10"/>
+                                        <rect x="80" y="80" width="10" height="10"/>
+                                        <rect x="100" y="80" width="10" height="10"/>
+                                        <rect x="120" y="80" width="10" height="10"/>
+                                        <rect x="140" y="80" width="10" height="10"/>
+                                        <rect x="160" y="80" width="10" height="10"/>
+                                        <rect x="180" y="80" width="10" height="10"/>
+                                        <rect x="20" y="100" width="10" height="10"/>
+                                        <rect x="40" y="100" width="10" height="10"/>
+                                        <rect x="60" y="100" width="10" height="10"/>
+                                        <rect x="80" y="100" width="10" height="10"/>
+                                        <rect x="100" y="100" width="10" height="10"/>
+                                        <rect x="120" y="100" width="10" height="10"/>
+                                        <rect x="140" y="100" width="10" height="10"/>
+                                        <rect x="160" y="100" width="10" height="10"/>
+                                        <rect x="180" y="100" width="10" height="10"/>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="upi-details">
+                            <p><strong>Demo UPI ID:</strong> demo@portfolio (NOT REAL)</p>
+                            <p class="payment-instructions">This QR code is for demonstration only - no payment will be processed</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="payment-actions">
+                    <button id="paymentCompleteBtn" class="btn btn--primary btn--full-width">
+                        Simulate Payment Completion (Demo)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Verification Modal -->
+    <div id="verificationModal" class="modal">
+        <div class="modal-content verification-modal">
+            <div class="verification-content">
+                <div class="loading-spinner"></div>
+                <h3>Simulating payment verification...</h3>
+                <p>Demo mode: Simulating payment confirmation process</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content success-modal">
+            <div class="success-content">
+                <div class="success-icon">✅</div>
+                <h2>Portfolio Demo - Simulated Order Complete!</h2>
+                <div class="demo-success-notice">
+                    <p><strong>This was a portfolio demonstration.</strong> No actual payment was processed. No real order was created. This showcases e-commerce functionality for a developer portfolio.</p>
+                </div>
+                <div id="orderDetails" class="order-details">
+                    <!-- Order details will be populated -->
+                </div>
+                <div class="success-actions">
+                    <button id="whatsappBtn" class="btn btn--primary btn--full-width">
+                        DEMO: View Order Summary (No WhatsApp)
+                    </button>
+                    <button id="continueShoppingBtn" class="btn btn--secondary btn--full-width">
+                        Continue Shopping
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Portfolio Footer -->
+    <footer style="background: #333; color: white; padding: 20px 0; text-align: center; margin-top: 50px;">
+        <div class="container">
+            <p><strong>⚠️ PORTFOLIO DEMONSTRATION ONLY ⚠️</strong></p>
+            <p>This is not a real e-commerce website. No actual transactions occur.</p>
+            <p><a href="disclaimer.html" style="color: #ffd700;">Read Full Disclaimer</a></p>
+            
+            <div style="margin: 20px 0; border-top: 1px solid #555; padding-top: 15px;">
+                <h4 style="margin-bottom: 10px; color: #ffd700;">Developer Contact</h4>
+                <p><strong>Mohammed Saqhib</strong></p>
+                <p>📧 <a href="mailto:msaqhib76@gmail.com" style="color: #87ceeb;">msaqhib76@gmail.com</a></p>
+                <p>📱 <a href="tel:+916239121164" style="color: #87ceeb;">+91 6239121164</a></p>
+            </div>
+            
+            <p style="font-size: 0.9em; margin-top: 15px;">© 2025 Mohammed Saqhib - Developer Portfolio Project</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
