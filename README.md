@@ -2,6 +2,12 @@
 
 ⚠️ **IMPORTANT DISCLAIMER: THIS IS A PORTFOLIO DEMONSTRATION WEBSITE ONLY** ⚠️
 
+## 🌐 Live Demo
+
+**View the live demo:** [https://mohammed-saqhib.github.io/Kritya/](https://mohammed-saqhib.github.io/Kritya/)
+
+*Note: This is a portfolio demonstration only. Do not enter real personal information.*
+
 ## What This Project Is
 
 This is a **developer portfolio project** that demonstrates front-end web development skills by creating a simulated e-commerce website for a fictional clothing brand called "Kritiya Fashion."
@@ -64,8 +70,9 @@ This project showcases the ability to create:
 ## Developer Contact
 
 **Mohammed Saqhib**
-- 📧 Email: msaqhib76@gmail.com
-- 📱 Phone: +91 6239121164
+- 🌐 **Live Demo**: [https://mohammed-saqhib.github.io/Kritya/](https://mohammed-saqhib.github.io/Kritya/)
+- 📧 **Email**: msaqhib76@gmail.com
+- 📱 **Phone**: +91 6239121164
 
 This is a portfolio project created by Mohammed Saqhib to demonstrate web development capabilities. It is not affiliated with any real business or e-commerce platform.
 
