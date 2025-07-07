@@ -4,7 +4,7 @@
 
 ## 🌐 Live Demo
 
-**View the live demo:** [https://mohammed-saqhib.github.io/Kritya/]([https://mohammed-saqhib.github.io/Kritya/](https://mohammed-saqhib.github.io/kritya-fashion-demo/))
+**View the live demo:** [https://mohammed-saqhib.github.io/kritya-fashion-demo/](https://mohammed-saqhib.github.io/kritya-fashion-demo/)
 
 *Note: This is a portfolio demonstration only. Do not enter real personal information.*
 
